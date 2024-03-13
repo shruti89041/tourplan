@@ -27,14 +27,14 @@ jobs:
         if: github.ref == 'refs/heads/main'
         run: echo "Waiting for manual approval"
         timeout-minutes: 10080 # Set a large timeout, adjust as needed
-  Approve-Deployment:
-    needs: Deploy-Production
-    if: github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Approve Deployment
-        if: github.actor == 'shruti89041' # Replace 'your-username' with your GitHub username
-        run: echo "::set-output name=approved::true"
-      - name: Check Approval
-        run: exit ${{ job.previousRun.steps.Deploy-Production.outputs.approved }}
+  # Approve-Deployment:
+  #   needs: Deploy-Production
+  #   if: github.ref == 'refs/heads/main'
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Approve Deployment
+  #       if: github.actor == 'shruti89041' # Replace 'your-username' with your GitHub username
+  #       run: echo "::set-output name=approved::true"
+  #     - name: Check Approval
+  #       run: exit ${{ job.previousRun.steps.Deploy-Production.outputs.approved }}
 
